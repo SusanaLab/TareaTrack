@@ -1,7 +1,7 @@
 import React from "react";
 
-const Todo = ({ todo, deleteTodo }) => {
-  const { title, description, state, priority, id } = todo;
+const Todo = ({ todo, deleteTodo, updateTodo  }) => {
+  const { title, description, state, priority, id} = todo;
   return (
     <li className="list-group-item">
       <div className="d-flex justify-content-between align-items-start">
@@ -12,7 +12,7 @@ const Todo = ({ todo, deleteTodo }) => {
           <p>{description}</p>
           <div className="d-flex gap-2">
             <button className="btn btn-sm btn-danger" onClick={() => deleteTodo(id)}>eliminar</button>
-            <button className="btn btn-sm btn-warning">actualizar</button>
+            <button onClick={()=> updateTodo(id)} className="btn btn-sm btn-warning">actualizar</button>
           </div>
         </div>
         <span className="badge text-bg-primary">
