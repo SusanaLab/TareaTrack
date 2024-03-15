@@ -1,6 +1,6 @@
 import React from "react";
 
-const Todo = ({ todo }) => {
+const Todo = ({ todo, deleteTodo }) => {
   const { title, description, state, priority, id } = todo;
   return (
     <li className="list-group-item">
@@ -11,7 +11,7 @@ const Todo = ({ todo }) => {
           </h5>
           <p>{description}</p>
           <div className="d-flex gap-2">
-            <button className="btn btn-sm btn-danger">eliminar</button>
+            <button className="btn btn-sm btn-danger" onClick={() => deleteTodo(id)}>eliminar</button>
             <button className="btn btn-sm btn-warning">actualizar</button>
           </div>
         </div>
