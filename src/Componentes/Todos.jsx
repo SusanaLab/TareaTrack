@@ -19,3 +19,4 @@ const Todos = ({todos, deleteTodo, updateTodo}) => {
 };
 
 export default Todos;
+

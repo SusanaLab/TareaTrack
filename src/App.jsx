@@ -25,11 +25,23 @@ const updateTodo = id =>{
   })
   setTodos(newArray)
 }
+
+const orderTodo = todosInicial => {
+  return todosInicial.sort((a,b)=>{
+    if(a.priority === b.priority) return 0
+    if(a.priority) return -1
+    if(!a.priority) return 1
+  })
+}
+
+
   return (
     <div className="container mb-2">
       <h1 className="my-5">Formularios</h1>
       <Formulario addTodo= {addTodo} />
-      <Todos todos={todos} deleteTodo={deleteTodo} updateTodo={updateTodo} />
+      <Todos todos={orderTodo(todos)} 
+      deleteTodo={deleteTodo} 
+      updateTodo={updateTodo} />
     </div>
   );
 };
