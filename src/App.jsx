@@ -1,13 +1,25 @@
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import Todos from './Componentes/Todos';
 import Formulario from './Componentes/Formulario';
+
 const todosInicial = [
   {id: 1, title: 'descripcion 1', state: true, priority: true},
   {id: 2, title: 'descripcion 2', state: false, priority: true},
   {id: 3, title: 'descripcion 3', state: true, priority: true},
 ];
+
+const inicialStateTodos = JSON.parse(localStorage.getItem('todos')) ||[];
+
 const App = () => {
-  const [todos, setTodos] = useState(todosInicial);
+
+  const [todos, setTodos] = useState(inicialStateTodos);
+
+useEffect(() => {
+  localStorage.setItem("todos", JSON.stringify(todos));
+
+}, [todos])
+
+
 const addTodo = todo =>{
 setTodos([...todos, todo])    
 }
@@ -26,8 +38,8 @@ const updateTodo = id =>{
   setTodos(newArray)
 }
 
-const orderTodo = todosInicial => {
-  return todosInicial.sort((a,b)=>{
+const orderTodo = inicialStateTodos => {
+  return inicialStateTodos.sort((a,b)=>{
     if(a.priority === b.priority) return 0
     if(a.priority) return -1
     if(!a.priority) return 1
